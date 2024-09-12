@@ -4,11 +4,13 @@ package com.example.SpringBoot_Study.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.Getter;
 import lombok.Setter;
 
 @Entity // JPA를 이용해서 이걸 영속성 객체로 쓰겠다. 데이터베이스에 저장하겠다?
 @Table(name = "user")   // Entity가 매핑될 테이블을 지정
 @Setter
+@Getter
 public class UserEntity {
     @Id
     private Long id;

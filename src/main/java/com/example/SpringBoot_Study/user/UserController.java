@@ -32,7 +32,34 @@ public class UserController {
 
         // 저장 로직
         userRepository.save(userEntity);    // select와 insert를 같이 해줌
+    }
+
+    @GetMapping("/save")
+    public void save(){
+        Long id = 2L;
+        String nickname = "복지민";
+        int age = 24;
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(id);
+        userEntity.setNickname(nickname);
+        userEntity.setAge(age);
+
+        userRepository.save(userEntity);
 
     }
 
+    @GetMapping("/delete")
+    public void delete(){
+        Long id = 2L;
+        String nickname = "복지민";
+        int age = 24;
+
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(id);
+        userEntity.setNickname(nickname);
+        userEntity.setAge(age);
+
+        userRepository.delete(userEntity);
+    }
 }
