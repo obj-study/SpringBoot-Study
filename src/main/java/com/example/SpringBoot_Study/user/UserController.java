@@ -12,10 +12,13 @@ public class UserController {
 
     private final UserRepository userRepository;
 
+    // 의존성 주입 - 생성자를 통한 의존성 주입
     public UserController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
+    // 메서드1 -> API 하나
+    // get요청 인데 /user/info로 요청이 들어오면
     @GetMapping("/info")
     public void info(){
         Long id = 1L;
@@ -27,7 +30,8 @@ public class UserController {
         userEntity.setNickname(nickname);
         userEntity.setAge(age);
 
-        userRepository.save(userEntity);
+        // 저장 로직
+        userRepository.save(userEntity);    // select와 insert를 같이 해줌
 
     }
 
