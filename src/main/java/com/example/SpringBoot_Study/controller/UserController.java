@@ -7,6 +7,7 @@ import com.example.SpringBoot_Study.service.UserService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +24,7 @@ public class UserController {
         this.userService = userService;
     }
 
+
     // query params
     @PostMapping("/save")
     public void save(
@@ -30,7 +32,7 @@ public class UserController {
             @RequestParam String nickname,
             @RequestParam int age
     ){
-        userService.saveUser(id, nickname, age);
+          userService.saveUser(id, nickname, age);
     }
 
     // request body
@@ -41,10 +43,20 @@ public class UserController {
         userService.saveUser2(userSaveRequest);
     }
 
+
     @GetMapping("/all")
     public List<UserEntity> findAll() {
         return userService.findAllUser();
     }
+
+    @GetMapping("/one/{uid}")
+    public UserEntity findOne(
+            @PathVariable Long uid
+    ) {
+        return userService.findUser(uid);
+    }
+
+
 
 
 //    @GetMapping("/delete")
