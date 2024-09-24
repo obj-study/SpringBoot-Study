@@ -1,5 +1,7 @@
 package com.example.SpringBoot_Study.controller.dto;
 
+import com.example.SpringBoot_Study.entity.UserEntity;
+
 public class UserSaveRequest {
     private Long id;
     private String nickname;
@@ -15,5 +17,9 @@ public class UserSaveRequest {
 
     public int getAge() {
         return age;
+    }
+
+    public UserEntity toEntity() {
+        return new UserEntity(id, nickname, age);
     }
 }

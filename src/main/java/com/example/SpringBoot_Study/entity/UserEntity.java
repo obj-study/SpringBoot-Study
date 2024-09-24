@@ -9,7 +9,6 @@ import lombok.Setter;
 
 @Entity // JPA를 이용해서 이걸 영속성 객체로 쓰겠다. 데이터베이스에 저장하겠다?
 @Table(name = "user")   // Entity가 매핑될 테이블을 지정
-@Setter
 @Getter
 public class UserEntity {
     @Id
@@ -20,4 +19,16 @@ public class UserEntity {
 
     private Integer age;
 
+    public UserEntity() {
+    }
+
+    public UserEntity(Long id, String nickname, int age) {
+        this.id = id;
+        this.nickname = nickname;
+        this.age = age;
+    }
+
+    public void updateNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }

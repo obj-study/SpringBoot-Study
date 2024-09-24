@@ -17,22 +17,18 @@ public class UserService {
 
     public void saveUser(Long id, String nickname, int age) {
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(id);
-        userEntity.setNickname(nickname);
-        userEntity.setAge(age);
+        UserEntity userEntity = new UserEntity(id, nickname, age);
 
         userRepository.save(userEntity);
     }
 
     public void saveUser2(UserSaveRequest userSaveRequest) {
 
-        UserEntity userEntity = new UserEntity();
-        userEntity.setId(userSaveRequest.getId());
-        userEntity.setNickname(userSaveRequest.getNickname());
-        userEntity.setAge(userSaveRequest.getAge());
+        // UserSaveRequest -> UserEntity
 
-        userRepository.save(userEntity);
+        UserEntity user = userSaveRequest.toEntity();
+
+        userRepository.save(user);
     }
 
     public List<UserEntity> findAllUser() {
@@ -52,8 +48,11 @@ public class UserService {
     }
 
     public UserEntity updateNickname(Long id) {
+
         UserEntity user = userRepository.findById(id).get();
-        user.setNickname("바뀐 닉네임");
+
+        user.updateNickname("바뀐 닉네임");
+
         return userRepository.save(user);
     }
 }
