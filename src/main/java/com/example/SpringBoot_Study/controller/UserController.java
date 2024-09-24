@@ -6,9 +6,11 @@ import com.example.SpringBoot_Study.repository.UserRepository;
 import com.example.SpringBoot_Study.service.UserService;
 import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,7 +26,9 @@ public class UserController {
         this.userService = userService;
     }
 
-
+    /**
+     * Create
+     */
     // query params
     @PostMapping("/save")
     public void save(
@@ -44,6 +48,9 @@ public class UserController {
     }
 
 
+    /**
+     * Read
+     */
     @GetMapping("/all")
     public List<UserEntity> findAll() {
         return userService.findAllUser();
@@ -57,6 +64,26 @@ public class UserController {
     }
 
 
+    /**
+     * Delete
+     */
+    @DeleteMapping("/delete/{uid}")
+    public void deleteOne(
+            @PathVariable Long uid
+    ) {
+        userService.deleteUser(uid);
+    }
+
+
+    /**
+     * Update
+     */
+    @PutMapping("/update/{uid}")
+    public UserEntity updateUser(
+            @PathVariable Long uid
+    ) {
+        return userService.updateNickname(uid);
+    }
 
 
 //    @GetMapping("/delete")

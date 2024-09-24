@@ -4,9 +4,6 @@ import com.example.SpringBoot_Study.controller.dto.UserSaveRequest;
 import com.example.SpringBoot_Study.entity.UserEntity;
 import com.example.SpringBoot_Study.repository.UserRepository;
 import java.util.List;
-import java.util.Optional;
-import javax.swing.text.html.Option;
-import org.apache.catalina.User;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -48,5 +45,15 @@ public class UserService {
         } else {
             return null;
         }
+    }
+
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    public UserEntity updateNickname(Long id) {
+        UserEntity user = userRepository.findById(id).get();
+        user.setNickname("바뀐 닉네임");
+        return userRepository.save(user);
     }
 }
