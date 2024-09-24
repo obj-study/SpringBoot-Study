@@ -86,17 +86,6 @@ public class UserController {
     }
 
 
-//    @GetMapping("/delete")
-//    public void delete(){
-//        Long id = 2L;
-//        String nickname = "복지민";
-//        int age = 24;
-//
-//        UserEntity userEntity = new UserEntity();
-//        userEntity.setId(id);
-//        userEntity.setNickname(nickname);
-//        userEntity.setAge(age);
-//
-//        userRepository.delete(userEntity);
-//    }
+    // TODO : 나이가 20살 이상인 유저들만 조회하는 API 구현하기
+
 }
