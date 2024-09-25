@@ -87,5 +87,10 @@ public class UserController {
 
 
     // TODO : 나이가 20살 이상인 유저들만 조회하는 API 구현하기
+    @GetMapping("/age/20")
+    public List<UserEntity> findAge(){
+        return userService.findAllAge(20);
+    }
+
 
 }
