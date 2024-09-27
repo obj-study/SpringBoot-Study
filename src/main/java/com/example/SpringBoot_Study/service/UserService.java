@@ -3,6 +3,7 @@ package com.example.SpringBoot_Study.service;
 import com.example.SpringBoot_Study.controller.dto.UserSaveRequest;
 import com.example.SpringBoot_Study.entity.UserEntity;
 import com.example.SpringBoot_Study.repository.UserRepository;
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -57,8 +58,21 @@ public class UserService {
     }
 
     public List<UserEntity> findAgeTwentyService() {
-        List<UserEntity> userAgeTwenty =  userRepository.findAll();
-        if()
+        List<UserEntity> userList = userRepository.findAll();
 
+        List<UserEntity> userTwentyList = new ArrayList<>();
+
+        for (int i = 0; i < userList.size(); i++) {
+            if (userList.get(i).getAge() >= 20) {
+                userTwentyList.add(userList.get(i));
+            }
+        }
+
+        return userTwentyList;
+    }
+
+    public List<UserEntity> findByAgeGreaterThanEqual() {
+        return userRepository.findByAgeGreaterThanEqual(20);
+        // 결국 이게 JPA의 이점을 잘 살린 코드이다.
     }
 }

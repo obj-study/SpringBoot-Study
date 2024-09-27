@@ -21,11 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
 
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
     /**
@@ -99,7 +97,7 @@ public class UserController {
     // Repository 에서 필터링
     @GetMapping("/age/twenty/repository")
     public List<UserEntity> findAge2() {
-        return userRepository.findByAgeGreaterThanEqual(20);
+        return userService.findByAgeGreaterThanEqual();
     }
 
 
