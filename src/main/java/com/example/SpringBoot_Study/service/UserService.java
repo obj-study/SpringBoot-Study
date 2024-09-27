@@ -56,12 +56,9 @@ public class UserService {
         return userRepository.save(user);
     }
 
-    public List<UserEntity> findAllAge(int age) {
-        if(age >= 20){
-            return userRepository.findByAge(age);
-        } else {
-            return null;
-        }
+    public List<UserEntity> findAgeTwentyService() {
+        List<UserEntity> userAgeTwenty =  userRepository.findAll();
+        if()
 
     }
 }
