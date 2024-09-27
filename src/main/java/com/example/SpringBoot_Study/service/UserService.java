@@ -55,4 +55,10 @@ public class UserService {
 
         return userRepository.save(user);
     }
+
+    public List<UserEntity> findAgeTwentyService() {
+        List<UserEntity> userAgeTwenty =  userRepository.findAll();
+        if()
+
+    }
 }

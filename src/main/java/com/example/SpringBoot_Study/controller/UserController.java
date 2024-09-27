@@ -21,9 +21,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
 
-    public UserController(UserService userService) {
+    public UserController(UserService userService, UserRepository userRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -87,5 +89,18 @@ public class UserController {
 
 
     // TODO : 나이가 20살 이상인 유저들만 조회하는 API 구현하기
+
+    // Service 에서 필터링
+    @GetMapping("/age/twenty/service")
+    public List<UserEntity> findAge() {
+        return userService.findAgeTwentyService();
+    }
+
+    // Repository 에서 필터링
+    @GetMapping("/age/twenty/repository")
+    public List<UserEntity> findAge2() {
+        return userRepository.findByAgeGreaterThanEqual(20);
+    }
+
 
 }
