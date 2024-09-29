@@ -75,4 +75,24 @@ public class UserService {
         return userRepository.findByAgeGreaterThanEqual(20);
         // 결국 이게 JPA의 이점을 잘 살린 코드이다.
     }
+
+    public List<UserEntity> deleteAgeNegativeService() {
+        List<UserEntity> userList = userRepository.findAll();
+
+        for (int i = 0; i < userList.size(); i++){
+            if(userList.get(i).getAge() < 0){
+                userRepository.deleteById(userList.get(i).getId());
+            }
+        }
+
+        return userList;
+    }
+
+    public List<UserEntity> deleteAgeNegativeRepository(){
+        List<UserEntity> userList = userRepository.findAll();
+        List<UserEntity> userNegative = userRepository.findByAgeLessThan(0);
+        userRepository.deleteAll(userNegative);
+
+        return userList;
+    }
 }

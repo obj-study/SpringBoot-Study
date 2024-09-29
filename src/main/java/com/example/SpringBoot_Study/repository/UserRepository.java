@@ -10,4 +10,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
     List<UserEntity> findByAgeGreaterThanEqual(int age);
     // SQL로는 select * from user where age >= ?;
 
+    List<UserEntity> findByAgeLessThan(int age);
+
 }
