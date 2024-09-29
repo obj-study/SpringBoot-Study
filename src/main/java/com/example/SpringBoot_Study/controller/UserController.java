@@ -109,6 +109,7 @@ public class UserController {
         return userService.deleteAgeNegativeService();
     }
 
+    // Repository 에서 필터링 후 삭제
     @GetMapping("/age/negative/delete/repository")
     public List<UserEntity> deleteAgeNegativeDeleteRepository() {
         return userService.deleteAgeNegativeRepository();
