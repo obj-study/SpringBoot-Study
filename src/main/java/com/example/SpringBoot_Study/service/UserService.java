@@ -89,10 +89,12 @@ public class UserService {
     }
 
     public List<UserEntity> deleteAgeNegativeRepository(){
-        List<UserEntity> userList = userRepository.findAll();
         List<UserEntity> userNegative = userRepository.findByAgeLessThan(0);
         userRepository.deleteAll(userNegative);
 
-        return userList;
+        // 굳이 userList 에 userRepository 에서 가져와 저장하지 말고 바로 리턴 받으면 됨
+        // List<UserEntity> userList = userRepository.findAll();
+        return userRepository.findAll();
     }
+
 }

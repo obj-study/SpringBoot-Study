@@ -104,13 +104,13 @@ public class UserController {
     // TODO : 나이가 음수인 유저들을 삭제하는 API 구현하기
 
     // Service 에서 필터링 후 삭제
-    @GetMapping("/age/negative/delete/service")
+    @DeleteMapping("/age/negative/delete/service")
     public List<UserEntity> deleteAgeNegativeDeleteService() {
         return userService.deleteAgeNegativeService();
     }
 
     // Repository 에서 필터링 후 삭제
-    @GetMapping("/age/negative/delete/repository")
+    @DeleteMapping("/age/negative/delete/repository")
     public List<UserEntity> deleteAgeNegativeDeleteRepository() {
         return userService.deleteAgeNegativeRepository();
     }
