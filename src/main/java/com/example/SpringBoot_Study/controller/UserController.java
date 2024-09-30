@@ -21,11 +21,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     private final UserService userService;
-    private final UserRepository userRepository;
 
-    public UserController(UserService userService, UserRepository userRepository) {
+    public UserController(UserService userService) {
         this.userService = userService;
-        this.userRepository = userRepository;
     }
 
     /**
@@ -99,8 +97,22 @@ public class UserController {
     // Repository 에서 필터링
     @GetMapping("/age/twenty/repository")
     public List<UserEntity> findAge2() {
-        return userRepository.findByAgeGreaterThanEqual(20);
+        return userService.findByAgeGreaterThanEqual();
     }
 
+
+    // TODO : 나이가 음수인 유저들을 삭제하는 API 구현하기
+
+    // Service 에서 필터링 후 삭제
+    @DeleteMapping("/age/negative/delete/service")
+    public List<UserEntity> deleteAgeNegativeDeleteService() {
+        return userService.deleteAgeNegativeService();
+    }
+
+    // Repository 에서 필터링 후 삭제
+    @DeleteMapping("/age/negative/delete/repository")
+    public List<UserEntity> deleteAgeNegativeDeleteRepository() {
+        return userService.deleteAgeNegativeRepository();
+    }
 
 }
